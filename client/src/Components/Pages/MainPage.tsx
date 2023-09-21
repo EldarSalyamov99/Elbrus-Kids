@@ -35,7 +35,6 @@ export default function MainPage(): JSX.Element {
             </li>
           ))}
         </ul>
-        <div className='bg-emerald-900'>ggg</div>
       </div>
     </div>
   )

@@ -1,6 +1,4 @@
-const {
-  Model,
-} = require('sequelize');
+const { Model } = require('sequelize');
 
 module.exports = (sequelize, DataTypes) => {
   class Category extends Model {
@@ -14,17 +12,24 @@ module.exports = (sequelize, DataTypes) => {
       this.hasMany(Question, {
         foreignKey: 'catId',
       });
+
+      Category.hasMany(Category, { as: 'subcategories', foreignKey: 'themeId' });
+
       this.belongsTo(Category, {
-        foreignKey: 'themeId', as: 'theme',
+        foreignKey: 'themeId',
+        as: 'theme',
       });
     }
   }
-  Category.init({
-    catName: DataTypes.STRING,
-    themeId: DataTypes.INTEGER,
-  }, {
-    sequelize,
-    modelName: 'Category',
-  });
+  Category.init(
+    {
+      catName: DataTypes.STRING,
+      themeId: DataTypes.INTEGER,
+    },
+    {
+      sequelize,
+      modelName: 'Category',
+    },
+  );
   return Category;
 };

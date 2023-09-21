@@ -1,7 +1,7 @@
-'use strict';
 const {
-  Model
+  Model,
 } = require('sequelize');
+
 module.exports = (sequelize, DataTypes) => {
   class Category extends Model {
     /**
@@ -9,19 +9,19 @@ module.exports = (sequelize, DataTypes) => {
      * This method is not a part of Sequelize lifecycle.
      * The `models/index` file will call this method automatically.
      */
-    static associate({Question, Category}) {
+    static associate({ Question, Category }) {
       // define association here
       this.hasMany(Question, {
-        foreignKey: 'catId'
-      })
+        foreignKey: 'catId',
+      });
       this.belongsTo(Category, {
-        foreignKey: 'themeId', as: 'theme'
-      })
+        foreignKey: 'themeId', as: 'theme',
+      });
     }
   }
   Category.init({
     catName: DataTypes.STRING,
-    themeId: DataTypes.INTEGER
+    themeId: DataTypes.INTEGER,
   }, {
     sequelize,
     modelName: 'Category',

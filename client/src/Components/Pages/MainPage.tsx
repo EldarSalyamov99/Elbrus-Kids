@@ -35,7 +35,7 @@ export default function MainPage(): JSX.Element {
             </li>
           ))}
         </ul>
-        <div className='bg-indigo-'>ggg</div>
+        <div className='bg-indigo-'>gvgggggg</div>
       </div>
     </div>
   )

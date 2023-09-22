@@ -1,8 +1,10 @@
 import React from 'react'
+import authHooks from '../../Features/Redux/hooks/authHooks'
 
 export default function SignUp():JSX.Element {
+    const {signUpActionHandler} = authHooks()
   return (
-    <div className="flex grow items-center justify-center">
+    <form onSubmit={(e) => void signUpActionHandler(e)} className="flex grow items-center justify-center">
         <div className="relative flex flex-col py-40 space-y-2  w-96" >
             <div className='text-center text-3xl font-bold text-gray-800'>Регистрация</div>
                 <div className='flex justify-center'>
@@ -34,7 +36,7 @@ export default function SignUp():JSX.Element {
                     Зарегистрироваться
                 </button>
             </div>
-            </div>
+            </form>
     
   )
 }

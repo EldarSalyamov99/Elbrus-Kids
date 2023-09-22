@@ -5,6 +5,7 @@ const session = require('express-session');
 const FileStore = require('session-file-store')(session);
 const postsRouter = require('./routes/postsRouter');
 const userRouter = require('./routes/userRouter');
+const gameRouter = require('./routes/gameRouter');
 
 require('dotenv').config();
 
@@ -29,7 +30,8 @@ app.use(
   }),
 );
 
-app.use('/api/posts', postsRouter);
-app.use('/api/user', userRouter);
+// app.use('/api/posts', postsRouter);
+// app.use('/api/user', userRouter);
+app.use('/api/game', gameRouter);
 
 app.listen(PORT, () => console.log(`Server has started on PORT ${PORT}`));

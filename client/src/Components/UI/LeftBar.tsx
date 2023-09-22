@@ -3,11 +3,11 @@ import { Link } from 'react-router-dom';
 
 export default function LeftBar(): JSX.Element {
   return (
-    <div className="fixed bottom-0 left-0 top-0 hidden flex-col gap-5 border-r-2 border-[#e5e5e5] bg-white p-3 md:flex lg:w-64 lg:p-5">
-      <h1 className="text-3xl font-bold tracking-tight text-gray-900 sm:text-4xl">Left bar</h1>
-      <nav>
-        <ul className="space-y-2">
-          <li>
+
+    <nav className="fixed bottom-0 left-0 top-0 hidden flex-col gap-5 border-r-2 border-[#e5e5e5] bg-white p-3 md:flex lg:w-64 lg:p-5">
+        <h1 className="mb-5 ml-5 mt-5 hidden text-3xl font-bold text-blue-500 lg:block">Elbrus-Kids</h1>
+        <ul className="flex flex-col items-stretch gap-3">
+          <li className='flex flex-1'>
             <Link to="/" className="text-2xl font-bold text-blue-500 font-kids">
               Домой
             </Link>
@@ -29,6 +29,6 @@ export default function LeftBar(): JSX.Element {
           </li>
         </ul>
       </nav>
-    </div>
+
   );
 }

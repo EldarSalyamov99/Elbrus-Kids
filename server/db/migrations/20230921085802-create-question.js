@@ -7,29 +7,32 @@ module.exports = {
         allowNull: false,
         autoIncrement: true,
         primaryKey: true,
-        type: Sequelize.INTEGER
+        type: Sequelize.INTEGER,
       },
       questions: {
-        type: Sequelize.TEXT
+        type: Sequelize.TEXT,
       },
       catId: {
         type: Sequelize.INTEGER,
         references: {
           model: 'Categories',
-          key: 'id'
-        }
+          key: 'id',
+        },
+      },
+      video: {
+        type: Sequelize.STRING,
       },
       createdAt: {
         allowNull: false,
-        type: Sequelize.DATE
+        type: Sequelize.DATE,
       },
       updatedAt: {
         allowNull: false,
-        type: Sequelize.DATE
-      }
+        type: Sequelize.DATE,
+      },
     });
   },
   async down(queryInterface, Sequelize) {
     await queryInterface.dropTable('Questions');
-  }
+  },
 };

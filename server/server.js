@@ -31,7 +31,7 @@ app.use(
 );
 
 // app.use('/api/posts', postsRouter);
-// app.use('/api/user', userRouter);
+app.use('/api/auth', userRouter);
 app.use('/api/game', gameRouter);
 
 app.listen(PORT, () => console.log(`Server has started on PORT ${PORT}`));

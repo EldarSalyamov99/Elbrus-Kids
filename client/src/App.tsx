@@ -6,10 +6,14 @@ import NavBar from './Components/UI/NavBar';
 
 import SignIn from './Components/Pages/SignIn';
 import SignUp from './Components/Pages/SignUp';
+import PrivateRoute from './Components/PrivateRoute';
+import { useAppSelector } from './Features/Redux/hooks/reduxHooks';
 
 function App(): JSX.Element {
+
   return (
     <>
+const user = useAppSelector((state) => state.user);
       <NavBar />
       <Routes>
         <Route path="/" element={<MainPage />} />
@@ -17,8 +21,9 @@ function App(): JSX.Element {
         <Route path="/signin" element={<SignIn />} />
         <Route path="/signup" element={<SignUp />} />
       </Routes>
-    </>
-  );
+
+</>
+)
 }
 
 export default App;

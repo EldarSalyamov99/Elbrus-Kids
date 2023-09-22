@@ -2,23 +2,28 @@ import React from 'react';
 import { Route, Routes } from 'react-router-dom';
 import MainPage from './Components/Pages/MainPage';
 import PersonalPage from './Components/Pages/PersonalPage';
-import LeftBar from './Components/UI/LeftBar';
+import NavBar from './Components/UI/NavBar';
+
 import SignIn from './Components/Pages/SignIn';
 import SignUp from './Components/Pages/SignUp';
+import PrivateRoute from './Components/PrivateRoute';
+import { useAppSelector } from './Features/Redux/hooks/reduxHooks';
 
 function App(): JSX.Element {
 
   return (
     <>
-    {/* <LeftBar/> */}
-    <Routes>
-      <Route path='/' element={<MainPage/>} />
-      <Route path='/personal' element={<PersonalPage/>} />
-      <Route path='/signin' element={<SignIn/>} />
-      <Route path='/signup' element={<SignUp/>} />
-    </Routes>
-    </>
-  );
+const user = useAppSelector((state) => state.user);
+      <NavBar />
+      <Routes>
+        <Route path="/" element={<MainPage />} />
+        <Route path="/personal" element={<PersonalPage />} />
+        <Route path="/signin" element={<SignIn />} />
+        <Route path="/signup" element={<SignUp />} />
+      </Routes>
+
+</>
+)
 }
 
 export default App;

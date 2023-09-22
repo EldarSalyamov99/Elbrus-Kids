@@ -1,16 +1,30 @@
 const express = require('express');
 const bcrypt = require('bcrypt');
 const { User } = require('../db/models');
+const mailer = require('../nodemailer');
 
 const router = express.Router();
 
 router.post('/signup', async (req, res) => {
-  const { username, email, password } = req.body;
-  if (username && email && password) {
+  const { name, phone, email, password } = req.body;
+
+  const message = {
+    to: req.body.email,
+    subject: 'Congratulations! You are successfully registered on our site',
+    text: `Поздравляем Вы успешно зарегистрировались на нашем сайте!
+    
+    данные вашей учетной записи:
+    login: ${req.body.email}
+    password: ${req.body.password}`,
+  };
+  mailer(message);
+
+  if (name && email && password) {
     try {
+      const hashpass = await bcrypt.hash(password, 10);
       const [user, created] = await User.findOrCreate({
         where: { email },
-        defaults: { username, password: await bcrypt.hash(password, 10) },
+        defaults: { name, phone, hashpass },
       });
       if (!created) return res.status(401).json({ message: 'User already exists' });
 
@@ -23,10 +37,11 @@ router.post('/signup', async (req, res) => {
       return res.status(500).json({ message: 'Server error' });
     }
   }
+
   return res.sendStatus(500);
 });
 
-router.post('/login', async (req, res) => {
+router.post('/signin', async (req, res) => {
   const { email, password } = req.body;
   if (email && password) {
     try {
@@ -34,7 +49,7 @@ router.post('/login', async (req, res) => {
         where: { email },
       });
       if (!user) return res.status(401).json({ message: 'User does not exist' });
-      if (!(await bcrypt.compare(password, user.password))) {
+      if (!(await bcrypt.compare(password, user.hashpass))) {
         return res.status(401).json({ message: 'Incorrect password' });
       }
 

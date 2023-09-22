@@ -5,33 +5,37 @@ const question = require('../db/models/question');
 const router = express.Router();
 
 router.get('/', async (req, res) => {
-  //  ручка для получения всех категорий
+  //  ручка для получения всех категорий и их процент прохожнения
 
-  // const categories = await Category.findAll({
-  //   include: [{ model: Category, as: 'subcategories' }],
-  //   where: { themeId: null },
-  // });
+  const user = 1;
   try {
-    const categories = await Category.findAll({ where: { themeId: null } });
+    const allQuestions = await Question.findAll();
 
-    res.json(categories);
-  } catch (err) {
-    console.log(err);
-  }
-});
-
-router.get('/:id', async (req, res) => {
-  // ручка для получения всех тем
-  try {
-    const { id } = req.params;
-    const categories = await Category.findOne({
+    const categories = await Category.findAll({
       include: [{ model: Category, as: 'subcategories' }],
-      where: { id, themeId: null },
+      include: [
+        { model: Category, as: 'subcategories' },
+        { model: Question, include: { model: Statistic, where: { userId: user } } },
+      ],
     });
 
-    const themes = categories.subcategories.map((el) => el);
+    const data = categories.map((el) => el.toJSON(), { depth: null });
 
-    res.json(themes);
+    const finalData = data.map((el) => {
+      console.log(el.Questions);
+      if (el.Questions.length) {
+        return {
+          ...el,
+          progress: Math.floor(
+            (el.Questions.length / allQuestions.filter((q) => q.catId === el.id).length) * 100,
+          ),
+        };
+      } else {
+        return el;
+      }
+    });
+
+    res.json(finalData);
   } catch (err) {
     console.log(err);
   }
@@ -69,10 +73,10 @@ router.post('question/:id', async (req, res) => {
   }
 });
 
-router.patch('/level', async (req, res) => {
+router.get('/level', async (req, res) => {
   // ручка для получения уровня
   try {
-    const question = await Question.findAll();
+    const questions = await Question.findAll();
 
     const user = 1;
 
@@ -80,7 +84,7 @@ router.patch('/level', async (req, res) => {
       where: { userId: user },
     });
 
-    const level = Math.floor((statistic.length / question.length) * 100);
+    const level = Math.floor((statistic.length / questions.length) * 100);
 
     console.log(level);
 
@@ -90,7 +94,7 @@ router.patch('/level', async (req, res) => {
   }
 });
 
-router.put('/catlevel', async (req, res) => {
+router.get('/catlevel', async (req, res) => {
   // ручка для получения уровня категории
   try {
     const user = 1;
@@ -103,7 +107,11 @@ router.put('/catlevel', async (req, res) => {
     const statistic = await Category.findAll({
       include: [
         { model: Category, as: 'subcategories' },
-        { model: Question, include: { model: Statistic, where: { userId: user } } },
+        {
+          model: Question,
+          as: 'progress',
+          include: { model: Statistic, where: { userId: user } },
+        },
       ],
     });
 
@@ -112,4 +120,22 @@ router.put('/catlevel', async (req, res) => {
     console.log(err);
   }
 });
+
+router.get('/:id', async (req, res) => {
+  // ручка для получения всех тем
+  try {
+    const { id } = req.params;
+    const categories = await Category.findOne({
+      include: [{ model: Category, as: 'subcategories' }],
+      where: { id, themeId: null },
+    });
+
+    const themes = categories.subcategories.map((el) => el);
+
+    res.json(themes);
+  } catch (err) {
+    console.log(err);
+  }
+});
+
 module.exports = router;

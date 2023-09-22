@@ -1,30 +1,28 @@
-import React from 'react'
+import type React from 'react';
 import { logoutService, signInService, signUpService } from '../../../Services/authService';
 import { setUser, setUserErr } from '../Slices/userSlice';
 import { useAppDispatch } from './reduxHooks';
 
 export default function authHooks(): {
-    signUpActionHandler: (e: React.FormEvent<HTMLFormElement>) => Promise<void>
-    signInActionHandler: (e: React.FormEvent<HTMLFormElement>) => Promise<void>
-    signOutActionHandler: (e: React.MouseEvent<HTMLElement>) => Promise<void>
+  signUpActionHandler: (e: React.FormEvent<HTMLFormElement>) => Promise<void>;
+  signInActionHandler: (e: React.FormEvent<HTMLFormElement>) => Promise<void>;
+  signOutActionHandler: (e: React.MouseEvent<HTMLElement>) => Promise<void>;
 } {
+  // eslint-disable-next-line react-hooks/rules-of-hooks
+  const dispatch = useAppDispatch();
 
-// eslint-disable-next-line react-hooks/rules-of-hooks
-const dispatch = useAppDispatch();
-
-const signUpActionHandler = async (e: React.FormEvent<HTMLFormElement>): Promise<void> => {
+  const signUpActionHandler = async (e: React.FormEvent<HTMLFormElement>): Promise<void> => {
     try {
-        e.preventDefault();
-        const formData = new FormData(e.currentTarget);
-        const data = await signUpService(formData);
-        dispatch(setUser(data));
-    }catch(err){
-        dispatch(setUserErr());
+      e.preventDefault();
+      const formData = new FormData(e.currentTarget);
+      const data = await signUpService(formData);
+      dispatch(setUser(data));
+    } catch (err) {
+      dispatch(setUserErr());
     }
-}
+  };
 
-
-const signInActionHandler = async (e: React.FormEvent<HTMLFormElement>): Promise<void> => {
+  const signInActionHandler = async (e: React.FormEvent<HTMLFormElement>): Promise<void> => {
     try {
       e.preventDefault();
       const formData = new FormData(e.currentTarget);
@@ -48,6 +46,6 @@ const signInActionHandler = async (e: React.FormEvent<HTMLFormElement>): Promise
   return {
     signUpActionHandler,
     signInActionHandler,
-    signOutActionHandler
-    }
+    signOutActionHandler,
+  };
 }

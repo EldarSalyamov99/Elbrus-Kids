@@ -10,7 +10,7 @@ const gameRouter = require('./routes/gameRouter');
 require('dotenv').config();
 
 const app = express();
-const PORT = process.env.PORT || 3001;
+const PORT = process.env.PORT || 3002;
 
 app.use(cors({ credentials: true, origin: true }));
 app.use(morgan('dev'));
@@ -31,7 +31,7 @@ app.use(
 );
 
 // app.use('/api/posts', postsRouter);
-// app.use('/api/user', userRouter);
+app.use('/api/auth', userRouter);
 app.use('/api/game', gameRouter);
 
 app.listen(PORT, () => console.log(`Server has started on PORT ${PORT}`));

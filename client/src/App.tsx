@@ -6,6 +6,8 @@ import SignIn from './Components/Pages/SignIn';
 import SignUp from './Components/Pages/SignUp';
 import PrivateRoute from './Components/PrivateRoute';
 import { useAppSelector } from './Features/Redux/hooks/reduxHooks';
+import LeftBar from './Components/UI/LeftBar';
+import RightBar from './Components/UI/RightBar';
 
 function App(): JSX.Element {
   const user = useAppSelector((state) => state.user);

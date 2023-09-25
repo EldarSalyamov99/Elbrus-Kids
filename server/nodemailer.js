@@ -11,7 +11,8 @@ const transporter = nodemailer.createTransport(
     },
   },
   {
-    from: 'Elbrus-Kids <elbrus.kids@mail.ru>',
+    from: 'Elbrus Kids <elbrus.kids@mail.ru>',
+
   },
 );
 

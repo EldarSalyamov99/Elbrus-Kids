@@ -2,7 +2,9 @@ import React, { useEffect } from 'react';
 import { Route, Routes } from 'react-router-dom';
 import MainPage from './Components/Pages/MainPage';
 import PersonalPage from './Components/Pages/PersonalPage';
+
 import NavBar from './Components/UI/NavBar';
+
 import SignIn from './Components/Pages/SignIn';
 import SignUp from './Components/Pages/SignUp';
 import PrivateRoute from './Components/PrivateRoute';
@@ -22,8 +24,6 @@ useEffect(()=>{
 },[])
 
   return (
-    <>
-      {/* <NavBar /> */}
 
       <Routes>
         <Route element={<Layout user={user} />} >
@@ -39,8 +39,6 @@ useEffect(()=>{
         </Route>
       </Routes>
 
-</>
-)
 }
 
 export default App;

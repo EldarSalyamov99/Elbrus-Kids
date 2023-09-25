@@ -1,4 +1,6 @@
+
 import type { CategoryType, LevelType } from '../Types/gameTypes';
+
 import apiClient from './apiConfig';
 
 export async function getGameCategories(): Promise<CategoryType[]> {

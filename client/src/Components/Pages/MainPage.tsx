@@ -1,19 +1,23 @@
-import { Layout, Menu } from 'antd';
-import Sider from 'antd/es/layout/Sider';
-import { Content, Footer } from 'antd/es/layout/layout';
 import React from 'react';
-import { Link } from 'react-router-dom';
-import LeftBar from '../UI/NavBar';
+import ControlledCarousel from '../UI/Carusel';
+import CardCourse from '../UI/CardCourse';
+import { Container } from 'react-bootstrap';
 
 export default function MainPage(): JSX.Element {
-  const items = ['Войти', 'Зарегистрироваться', 'Профиль', 'Выход'].map((item) => ({
-    key: item,
-    label: item,
-  }));
+  const themes = ['HTML', 'CSS', 'JavaScript', 'React'];
 
   return (
-    <Layout>
-      <Content style={{ padding: '0 24px', minHeight: 280 }}>Content</Content>
-    </Layout>
+    <>
+      <ControlledCarousel />
+      <div style={{background: 'linear-gradient(to bottom right, #ffffff, #ccccff)'}}>
+        <h1 style={{marginTop: '20px', marginLeft: '300px', fontFamily: 'Roboto, sans-serif' }} >Программа</h1>
+        <div  className="d-flex justify-content-center mt-3">
+          {themes.map((theme) => (
+            <CardCourse key={theme} theme={theme} />
+          ))}
+        </div>
+      </div>
+
+    </>
   );
 }

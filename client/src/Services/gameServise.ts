@@ -1,4 +1,4 @@
-import { CategoryType } from '../Types/gameTypes';
+import type { CategoryType } from '../Types/gameTypes';
 import apiClient from './apiConfig';
 
 export function getGameCategories(): Promise<CategoryType[]> {

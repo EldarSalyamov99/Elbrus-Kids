@@ -3,14 +3,14 @@ const morgan = require('morgan');
 const cors = require('cors');
 const session = require('express-session');
 const FileStore = require('session-file-store')(session);
-const postsRouter = require('./routes/postsRouter');
+// const postsRouter = require('./routes/postsRouter');
 const userRouter = require('./routes/userRouter');
 const gameRouter = require('./routes/gameRouter');
 
 require('dotenv').config();
 
 const app = express();
-const PORT = process.env.PORT || 3001;
+const PORT = process.env.PORT || 3002;
 
 app.use(cors({ credentials: true, origin: true }));
 app.use(morgan('dev'));

@@ -7,11 +7,11 @@ const transporter = nodemailer.createTransport(
     secure: true,
     auth: {
       user: 'elbrus.kids@mail.ru',
-      pass: 'Eldar_S23',
+      pass: 'tvqrWa4AGUCqn9taax1d',
     },
   },
   {
-    from: 'Mailer Test <elbrus.kids@mail.ru>',
+    from: 'Elbrus-Kids <elbrus.kids@mail.ru>',
   },
 );
 

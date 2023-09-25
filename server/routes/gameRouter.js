@@ -1,13 +1,11 @@
 const express = require('express');
 const { Category, Question, Answer, Statistic } = require('../db/models');
-const question = require('../db/models/question');
 
 const router = express.Router();
 
-router.get('/', async (req, res) => {
+router.get('/categories', async (req, res) => {
   //  ручка для получения всех категорий и их процент прохожнения
-
-  const user = 1;
+  const user = req.session.user.id;
   try {
     const allQuestions = await Question.findAll();
 
@@ -21,18 +19,21 @@ router.get('/', async (req, res) => {
 
     const data = categories.map((el) => el.toJSON(), { depth: null });
 
-    const finalData = data.map((el) => {
-      console.log(el.Questions);
+    const finalData = data.map((el, index, array) => {
       if (el.Questions.length) {
-        return {
-          ...el,
-          progress: Math.floor(
-            (el.Questions.length / allQuestions.filter((q) => q.catId === el.id).length) * 100,
-          ),
-        };
-      } else {
-        return el;
+        const i = el.themeId;
+
+        let element = 0;
+
+        for (let j = 0; j < el.length; j += 1) {
+          if (i === el[j].themeId) {
+            element = j;
+          }
+        }
+
+        array[element].progress = Math.floor((el.Questions.length / allQuestions.length) * 100);
       }
+      return el;
     });
 
     res.json(finalData);
@@ -78,7 +79,7 @@ router.get('/level', async (req, res) => {
   try {
     const questions = await Question.findAll();
 
-    const user = 1;
+    const user = req.session.user.id;
 
     const statistic = await Statistic.findAll({
       where: { userId: user },
@@ -89,33 +90,6 @@ router.get('/level', async (req, res) => {
     console.log(level);
 
     res.json(level);
-  } catch (err) {
-    console.log(err);
-  }
-});
-
-router.get('/catlevel', async (req, res) => {
-  // ручка для получения уровня категории
-  try {
-    const user = 1;
-
-    // const statistic = await Statistic.findAll({
-    //   include: { model: Question },
-    //   where: { userId: user },
-    // });
-
-    const statistic = await Category.findAll({
-      include: [
-        { model: Category, as: 'subcategories' },
-        {
-          model: Question,
-          as: 'progress',
-          include: { model: Statistic, where: { userId: user } },
-        },
-      ],
-    });
-
-    res.json(statistic);
   } catch (err) {
     console.log(err);
   }

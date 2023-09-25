@@ -1,62 +1,28 @@
 import React from 'react';
+import { CircularProgressbar, buildStyles } from 'react-circular-progressbar';
+import { Link } from 'react-router-dom';
+import type { CategoryType } from '../../Types/gameTypes';
 
-export default function Board(): JSX.Element {
+type CategoriesType = {
+  Categories: CategoryType[];
+};
+
+export default function Board({ Categories }: CategoriesType): JSX.Element {
   return (
-    <div  style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center', height: '100vh' }}>
-      <div style={{backgroundColor: 'purple', display: 'flex', justifyContent: 'center', marginBottom: '20px' }}>
-        <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', width: '80px', height: '80px', border: '2px solid #000', borderRadius: '50%', backgroundColor: '#fff', color: '#000', fontWeight: 'bold', cursor: 'pointer' }}>
-          Level 1
-        </div>
-        <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', width: '80px', height: '80px', border: '2px solid #000', borderRadius: '50%', backgroundColor: '#fff', color: '#000', fontWeight: 'bold', cursor: 'pointer' }}>
-          Level 2
-        </div>
-        <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', width: '80px', height: '80px', border: '2px solid #000', borderRadius: '50%', backgroundColor: '#fff', color: '#000', fontWeight: 'bold', cursor: 'pointer' }}>
-          Level 3
-        </div>
-        <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', width: '80px', height: '80px', border: '2px solid #000', borderRadius: '50%', backgroundColor: '#fff', color: '#000', fontWeight: 'bold', cursor: 'pointer' }}>
-          Level 4
-        </div>
-        <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', width: '80px', height: '80px', border: '2px solid #000', borderRadius: '50%', backgroundColor: '#fff', color: '#000', fontWeight: 'bold', cursor: 'pointer' }}>
-          Level 5
-        </div>
-      </div>
-      <div style={{ display: 'flex', justifyContent: 'center', marginBottom: '20px' }}>
-        <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', width: '80px', height: '80px', border: '2px solid #000', borderRadius: '50%', backgroundColor: '#fff', color: '#000', fontWeight: 'bold', cursor: 'pointer' }}>
-          Level 6
-        </div>
-        <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', width: '80px', height: '80px', border: '2px solid #000', borderRadius: '50%', backgroundColor: '#fff', color: '#000', fontWeight: 'bold', cursor: 'pointer' }}>
-          Level 7
-        </div>
-        <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', width: '80px', height: '80px', border: '2px solid #000', borderRadius: '50%', backgroundColor: '#fff', color: '#000', fontWeight: 'bold', cursor: 'pointer' }}>
-          Level 8
-        </div>
-        <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', width: '80px', height: '80px', border: '2px solid #000', borderRadius: '50%', backgroundColor: '#fff', color: '#000', fontWeight: 'bold ', cursor: 'pointer' }}>
-                  Level 8
-                  </div>
-                  <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', width: '80px', height: '80px', border: '2px solid #000', borderRadius: '50%', backgroundColor: '#fff', color: '#000', fontWeight: 'bold', cursor: 'pointer' }}>
-                    Level 9
-                  </div>
-                  <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', width: '80px', height: '80px', border: '2px solid #000', borderRadius: '50%', backgroundColor: '#fff', color: '#000', fontWeight: 'bold', cursor: 'pointer' }}>
-                    Level 10
-                  </div>
-                </div>
-                <div style={{ display: 'flex', justifyContent: 'center', marginBottom: '20px' }}>
-                  <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', width: '80px', height: '80px', border: '2px solid #000', borderRadius: '50%', backgroundColor: '#fff', color: '#000', fontWeight: 'bold', cursor: 'pointer' }}>
-                    Level 11
-                  </div>
-                  <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', width: '80px', height: '80px', border: '2px solid #000', borderRadius: '50%', backgroundColor: '#fff', color: '#000', fontWeight: 'bold', cursor: 'pointer' }}>
-                    Level 12
-                  </div>
-                  <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', width: '80px', height: '80px', border: '2px solid #000', borderRadius: '50%', backgroundColor: '#fff', color: '#000', fontWeight: 'bold', cursor: 'pointer' }}>
-                    Level 13
-                  </div>
-                  <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', width: '80px', height: '80px', border: '2px solid #000', borderRadius: '50%', backgroundColor: '#fff', color: '#000', fontWeight: 'bold', cursor: 'pointer' }}>
-                    Level 14
-                  </div>
-                  <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', width: '80px', height: '80px', border: '2px solid #000', borderRadius: '50%', backgroundColor: '#fff', color: '#000', fontWeight: 'bold', cursor: 'pointer' }}>
-                    Level 15
-                  </div>
-                </div>
-              </div>
-            );
+    <div className="board">
+      {Categories.filter((category) => category.themeId === null)
+        .map((el, i) => (
+          <div key={el.id} className={`categories ${i++ % 2 === 0 ? 'right' : 'left'}`}>
+            <Link to={`api/game/${el.id}`}>
+              <CircularProgressbar
+                value={el.progress === undefined ? 0 : el.progress}
+                text={el.catName}
+                styles={buildStyles({ pathColor: '#32CD32', textColor: '#000000A6' })}
+              />
+            </Link>
+          </div>
+        ))
+        .reverse()}
+    </div>
+  );
 }

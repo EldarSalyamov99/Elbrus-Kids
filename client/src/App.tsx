@@ -38,7 +38,7 @@ useEffect(()=>{
         <Route path="/parents" element={<BlogParents />} />
         </Route>
       </Routes>
-
+  )
 }
 
 export default App;

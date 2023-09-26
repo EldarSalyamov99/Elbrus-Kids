@@ -1,4 +1,4 @@
-import type { UserType } from '../Types/userTypes';
+import type { UpdateUserType, UserType } from '../Types/userTypes';
 import apiClient from './apiConfig';
 
 export function signUpService(formData: FormData): Promise<UserType> {
@@ -30,3 +30,10 @@ export function authCheckService(): Promise<UserType> {
       .catch((err) => Promise.reject(err));
   }
   
+
+  export function updateUserServise(formData: FormData): Promise<UpdateUserType> {
+    return apiClient
+      .patch<UpdateUserType>('/:id', Object.fromEntries(formData))
+      .then(({ data }) => data)
+      .catch((err) => Promise.reject(err));
+  }

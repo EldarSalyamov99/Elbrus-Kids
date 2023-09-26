@@ -3,8 +3,6 @@ import { CircularProgressbar, buildStyles } from 'react-circular-progressbar';
 import { Link } from 'react-router-dom';
 import type { CategoryType } from '../../Types/gameTypes';
 
-]
-
 type CategoriesType = {
   Categories: CategoryType[];
 };

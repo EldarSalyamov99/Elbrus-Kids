@@ -16,7 +16,7 @@ export default function Test(): JSX.Element {
 
   return (
     <>
-      <ProgressBar now={level} label={`${level}%`} />
+      <ProgressBar now={level | 0} label={`${level}%`} />
       <Board Categories={Categories} />
     </>
   );

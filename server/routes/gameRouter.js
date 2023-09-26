@@ -1,12 +1,14 @@
 const express = require('express');
-const { Category, Question, Answer, Statistic } = require('../db/models');
+const {
+  Category, Question, Answer, Statistic,
+} = require('../db/models');
 
 const router = express.Router();
 
 router.get('/categories', async (req, res) => {
   //  ручка для получения всех категорий и их процент прохожнения
-  const user = req.session.user.id;
   try {
+    const user = req.session.user.id;
     const allQuestions = await Question.findAll();
 
     const categories = await Category.findAll({

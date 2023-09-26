@@ -28,8 +28,8 @@ useEffect(()=>{
       <Routes>
         <Route element={<Layout user={user} />} >
         <Route path="/" element={<MainPage />} />
-        <Route element={<PrivateRoute isAllowed={user.status !== "success"} redirectTo="/" />} >
         <Route path="/personal" element={<PersonalPage />} />
+        <Route element={<PrivateRoute isAllowed={user.status !== "success"} redirectTo="/" />} >
         <Route path="/signin" element={<SignIn />} />
         <Route path="/signup" element={<SignUp />} />
         </Route>

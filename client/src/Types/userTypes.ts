@@ -4,6 +4,7 @@ export type UserFormType = {
   name: string;
   phone: string;
   password: string;
+
 };
 
 export type UserType = {

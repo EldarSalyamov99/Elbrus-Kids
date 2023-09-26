@@ -24,7 +24,7 @@ module.exports = (sequelize, DataTypes) => {
     {
       questions: DataTypes.TEXT,
       catId: DataTypes.INTEGER,
-      video: DataTypes.STRING,
+      video: DataTypes.TEXT,
     },
     {
       sequelize,

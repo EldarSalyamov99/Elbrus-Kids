@@ -6,12 +6,14 @@ import PersonalPage from './Components/Pages/PersonalPage';
 import SignIn from './Components/Pages/SignIn';
 import SignUp from './Components/Pages/SignUp';
 import PrivateRoute from './Components/PrivateRoute';
+
 import { useAppDispatch, useAppSelector } from './Features/Redux/hooks/reduxHooks';
 import Test from './Components/Pages/Test';
 import Board from './Components/UI/Board';
 import BlogParents from './Components/Pages/BlogParents';
 import { userCheckActionThunk } from './Features/Redux/Actions/userAction';
 import Layout from './Components/Layout';
+
 
 function App(): JSX.Element {
   const user = useAppSelector((state) => state.user);

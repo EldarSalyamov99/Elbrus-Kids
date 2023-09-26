@@ -20,7 +20,7 @@ module.exports = {
         },
       },
       video: {
-        type: Sequelize.STRING,
+        type: Sequelize.TEXT,
       },
       createdAt: {
         allowNull: false,

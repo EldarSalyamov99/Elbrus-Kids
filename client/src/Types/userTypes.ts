@@ -1,5 +1,5 @@
 export type UserFormType = {
-    id: number,
+    // id: number,
     email: string,
     name: string,
     phone: string,

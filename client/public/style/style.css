@@ -1,0 +1,28 @@
+.board {
+  height: 70vh;
+  width: 15vw;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  align-items: center;
+  margin: 50px auto;
+}
+
+.image {
+  width: 200px;
+  height: 200px;
+}
+
+.categories {
+  border-radius: 50%;
+  width: 100px;
+  height: 100px;
+}
+
+.right {
+  align-self: flex-start;
+}
+
+.left {
+  align-self: flex-end;
+}

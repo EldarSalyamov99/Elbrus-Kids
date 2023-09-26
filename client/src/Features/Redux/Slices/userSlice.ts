@@ -1,6 +1,7 @@
 import type { PayloadAction} from "@reduxjs/toolkit";
 import { createSlice } from "@reduxjs/toolkit";
 import type { AuthUserType, UserType } from "../../../Types/userTypes";
+import { userCheckActionThunk } from "../Actions/userAction";
 
 
 const initialState: AuthUserType ={
@@ -17,8 +18,20 @@ export const userSlice = createSlice({
         setUserErr: (state) =>({
             status: 'failed',
         }),
+        
     },
-   
+    extraReducers: (builder) => {
+        builder.addCase(userCheckActionThunk.pending, (state, action) =>{
+            state.status = 'fetching';
+        });
+        builder.addCase(userCheckActionThunk.fulfilled, (state, action) => ({
+            status: 'success', 
+            user: action.payload,
+        }));
+        builder.addCase(userCheckActionThunk.rejected, () => ({
+            status: 'failed',
+        }));
+    },
 });
 
 export default userSlice.reducer;

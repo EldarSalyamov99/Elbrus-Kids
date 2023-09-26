@@ -1,22 +1,29 @@
 export type UserFormType = {
-    // id: number,
-    email: string,
-    name: string,
-    phone: string,
-    password: string
+  id: number;
+  email: string;
+  name: string;
+  phone: string;
+  password: string;
+
 };
 
-export type UserType ={
-    id:number,
-    name:string,
-    email: string,
-    phone: string
+export type UserType = {
+  id: number;
+  name: string;
+  email: string;
+  phone: string;
+};
+
+export type UpdateUserType = {
+id: number;
+name: string;
+phone: string;
 };
 
 export type AuthUserType =
-|{status: 'fetching'}
-|{status: 'success'; user: UserType}
-|{status: 'failed'};
+  | { status: 'fetching' }
+  | { status: 'success'; user: UserType }
+  | { status: 'failed' };
 
 export type AuthActionType =
   | { type: 'SIGNUP'; payload: UserType }

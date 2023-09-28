@@ -5,7 +5,7 @@ import { useAppSelector } from '../../Features/Redux/hooks/reduxHooks';
 export default function PersonalPage(): JSX.Element {
   
 const user = useAppSelector((store) => store.user);
- 
+ const [isModalOpen, setIsModalOpen] = useState(false);
   const openModal = (): void => {
     setIsModalOpen(true);
   };

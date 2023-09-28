@@ -10,6 +10,8 @@ import Test from './Components/Pages/Test';
 import { userCheckActionThunk } from './Features/Redux/Actions/userAction';
 import Layout from './Components/Layout';
 import GamePage from './Components/Pages/GamePage';
+import Board from './Components/UI/Board';
+import ParentsPage from './Components/Pages/BlogParents';
 
 function App(): JSX.Element {
   const user = useAppSelector((state) => state.user);
@@ -33,7 +35,7 @@ useEffect(()=>{
         <Route path="/signup" element={<SignUp />} />
         </Route>
         <Route path="/board" element={<Board />} />
-        <Route path="/parents" element={<BlogParents />} />
+        <Route path="/parents" element={<ParentsPage />} />
         <Route path="/personal" element={<PersonalPage />} />
         <Route path="/course" element={<Test />} />
         <Route path="/courses/:id" element={<GamePage />} />

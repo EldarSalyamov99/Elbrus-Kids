@@ -24,16 +24,15 @@ export function logoutService(): Promise<number> {
 }
 
 export function authCheckService(): Promise<UserType> {
-    return apiClient
-      .get<UserType>('/auth/check')
-      .then(({ data }) => data)
-      .catch((err) => Promise.reject(err));
-  }
-  
+  return apiClient
+    .get<UserType>('/auth/check')
+    .then(({ data }) => data)
+    .catch((err) => Promise.reject(err));
+}
 
-  export function updateUserServise(formData: FormData): Promise<UpdateUserType> {
-    return apiClient
-      .patch<UpdateUserType>('/:id', Object.fromEntries(formData))
-      .then(({ data }) => data)
-      .catch((err) => Promise.reject(err));
-  }
+export function updateUserServise(formData: FormData): Promise<UserType> {
+  return apiClient
+    .patch<UpdateUserType>(`/auth/update`, Object.fromEntries(formData))
+    .then(({ data }) => data)
+    .catch((err) => Promise.reject(err));
+}

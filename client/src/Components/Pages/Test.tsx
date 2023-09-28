@@ -14,10 +14,7 @@ export default function Test(): JSX.Element {
     void dispatch(getLevelThunk());
   }, []);
 
-  return (
-    <>
-      <ProgressBar now={level | 0} label={`${level}%`} />
-      <Board Categories={Categories} />
-    </>
-  );
+
+  return <Board Categories={Categories} />;
+
 }

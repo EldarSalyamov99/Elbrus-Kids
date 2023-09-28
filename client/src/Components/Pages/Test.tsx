@@ -15,6 +15,9 @@ export default function Test(): JSX.Element {
   }, []);
 
 
-  return <Board Categories={Categories} />;
-
+  return( 
+      <div style={{backgroundImage: 'url(/image/тропа2.jpg)', backgroundSize: 'contain', backgroundPosition: 'center', backgroundRepeat: 'no-repeat', height: '100vh', display: 'flex', justifyContent: 'center', alignItems: 'center'}}>
+      <Board Categories={Categories} />;
+    </div>
+  )
 }

@@ -38,7 +38,7 @@ function ControlledCarousel(): JSX.Element {
           <img
             style={{ height: '500px', width: '100%', objectFit: 'cover' }}
             className="d-block w-100"
-            src="/image/эльбрус.jpg"
+            src="/image/3.jpg"
             alt="First Slide"
           />
         </Carousel.Item>
@@ -48,14 +48,6 @@ function ControlledCarousel(): JSX.Element {
             className="d-block w-100"
             src="https://mayak.travel/m/picture/8/58/1240x520.dfcfb20029c8bcd5ac6c3525afb3d970c376ebb7f254b7edf7bda9045a5e1e4a.png"
             alt="Second Slide"
-          />
-        </Carousel.Item>
-        <Carousel.Item>
-          <img
-            style={{ height: '500px', width: '100%', objectFit: 'cover' }}
-            className="d-block w-100"
-            src="/image/эльбрус.jpg"
-            alt="Third Slide"
           />
         </Carousel.Item>
       </Carousel>

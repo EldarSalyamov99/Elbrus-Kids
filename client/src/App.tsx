@@ -20,7 +20,9 @@ function App(): JSX.Element {
   const dispatch = useAppDispatch();
 
 useEffect(()=>{
+  setTimeout(() =>{
   void dispatch(userCheckActionThunk())
+},1000)
 },[])
 
   return (

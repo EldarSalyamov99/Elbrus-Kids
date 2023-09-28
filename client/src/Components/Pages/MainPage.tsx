@@ -1,7 +1,7 @@
 import React from 'react';
 import ControlledCarousel from '../UI/Carusel';
-import CardCourse from '../UI/CardCourse';
-import { Container } from 'react-bootstrap';
+import CorseBanner from '../UI/CorseBanner';
+import ParentsBaner from '../UI/ParentsBaner';
 
 export default function MainPage(): JSX.Element {
   const themes = ['HTML', 'CSS', 'JavaScript', 'React'];
@@ -9,15 +9,8 @@ export default function MainPage(): JSX.Element {
   return (
     <>
       <ControlledCarousel />
-      <div style={{background: 'linear-gradient(to bottom right, #ffffff, #ccccff)'}}>
-        <h1 style={{marginTop: '20px', marginLeft: '300px', fontFamily: 'Roboto, sans-serif' }} >Программа</h1>
-        <div  className="d-flex justify-content-center mt-3">
-          {themes.map((theme) => (
-            <CardCourse key={theme} theme={theme} />
-          ))}
-        </div>
-      </div>
-
+      <CorseBanner />
+      <ParentsBaner/>
     </>
   );
 }

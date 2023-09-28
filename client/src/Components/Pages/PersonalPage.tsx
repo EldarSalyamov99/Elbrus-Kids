@@ -1,45 +1,23 @@
-
 import React, { useState } from 'react';
 import ModalEdit from './ModalEdit';
-
-
-
-
-import ReactPlayer from 'react-player';
-
-
+import { useAppSelector } from '../../Features/Redux/hooks/reduxHooks';
 export default function PersonalPage(): JSX.Element {
   const [name, setName] = useState('Vazgen');
   const [lastName, setLastName] = useState('oG');
   const [phone, setPhone] = useState('8927272727');
   const [email, setEmail] = useState('lol.com');
   const [isModalOpen, setIsModalOpen] = useState(false);
-
-  const openModal = (e): void => {
-    console.log(e);
-
-    e.preventDefault();
-    setIsModalOpen(true);
-  };
-  const closeModal = (): void => {
-    setIsModalOpen(false);
-  };
-=======
-
+const user = useAppSelector((store) => store.user);
   const openModal = (): void => {
     setIsModalOpen(true);
   };
-
   const closeModal = (): void => {
     setIsModalOpen(false);
   };
-
-
   const handleSave = (): void => {
     // Обработка сохранения данных о пользователе
     closeModal();
   };
-
   return (
     <div className="w-3/4 ml-52 mt-28">
       <section className="flex flex-row border-b-2 border-gray-200 pb-8 md:flex-row md:gap-8">
@@ -67,9 +45,8 @@ export default function PersonalPage(): JSX.Element {
         >
           Edit profile
         </button>
-        {isModalOpen && <ModalEdit setIsModalOpen={setIsModalOpen} closeModal={closeModal} />}
+        {isModalOpen && <ModalEdit setIsModalOpen={setIsModalOpen} user ={user} closeModal={closeModal} />}
       </section>
-
       <section>
         <h2 className="mb-5 text-2xl font-bold">Statistics</h2>
         <div className="grid grid-cols-2 gap-3">
@@ -103,5 +80,4 @@ export default function PersonalPage(): JSX.Element {
       </section>
     </div>
   );
-
 }

@@ -1,73 +1,23 @@
 const express = require('express');
-const {
-  Category, Question, Answer, Statistic,
-} = require('../db/models');
+const { Category, Question, Answer, Statistic } = require('../db/models');
+const { where, Op } = require('sequelize');
 
 const router = express.Router();
 
 router.get('/categories', async (req, res) => {
   //  ручка для получения всех категорий и их процент прохожнения
   try {
-    const user = req.session.user.id;
-    const allQuestions = await Question.findAll();
-
     const categories = await Category.findAll({
       include: [
         {
           model: Category,
           as: 'subcategories',
-          include: {
-            model: Question,
-            include: { model: Statistic, where: { userId: user } },
-          },
-        },
-        {
-          model: Question,
         },
       ],
+      where: { themeId: null },
     });
 
-    const data = categories
-      .map((el) => el.toJSON(), { depth: null })
-      .filter((item) => item.themeId === null);
-
-    const finalData = data.map((el, index, array) => {
-      el.progress = 0;
-      el.subcategories.map((subcategories) => {
-        if (subcategories.Questions.length) {
-          const i = subcategories.themeId;
-
-          let element = 0;
-
-          for (let j = 0; j < el.length; j += 1) {
-            if (i === el[j].themeId) {
-              element = j;
-            }
-          }
-
-          const allCat = array
-            .map((el) => el.subcategories.filter((elem) => elem.themeId === i))
-            .flat();
-
-          const allCatQuest = [];
-
-          for (let v = 0; v < allQuestions.length; v += 1) {
-            for (let g = 0; g < allCat.length; g += 1) {
-              if (allQuestions[v].catId === allCat[g]?.id) {
-                allCatQuest.push(allQuestions[v]);
-              }
-            }
-          }
-
-          array[element].progress = Math.floor(
-            (subcategories.Questions.length / allCatQuest.length) * 100,
-          );
-        }
-      });
-      return el;
-    });
-
-    res.json(finalData);
+    res.json(categories);
   } catch (err) {
     console.log(err);
   }
@@ -162,13 +112,51 @@ router.get('/:id', async (req, res) => {
   try {
     const { id } = req.params;
     const categories = await Category.findOne({
-      include: [{ model: Category, as: 'subcategories' }],
+      include: [
+        {
+          model: Category,
+          as: 'subcategories',
+          include: {
+            model: Question,
+            include: { model: Statistic, where: { userId: req.session.user.id } },
+          },
+        },
+      ],
       where: { id, themeId: null },
     });
 
-    const themes = categories.subcategories.map((el) => el);
+    const themes = categories.subcategories
+      .map((el) => el.toJSON(), { depth: null })
+      .map((el) => el);
 
-    res.json(themes);
+    const allQuestsCat = await Category.findOne({
+      include: [
+        {
+          model: Category,
+          as: 'subcategories',
+          include: {
+            model: Question,
+          },
+        },
+      ],
+      where: { id, themeId: null },
+    });
+
+    const newQuestCat = allQuestsCat.subcategories.map((el) => el.toJSON(), { depth: null });
+
+    const result = themes.map((el, index) => {
+      if (el.Questions.length !== newQuestCat[index].Questions.length) {
+        return false;
+      } else {
+        return true;
+      }
+    });
+
+    const twoResult = themes.map((el, index) => ({ ...el, progress: result[index] }));
+
+    console.log(twoResult);
+
+    res.json(twoResult);
   } catch (err) {
     console.log(err);
   }
@@ -195,6 +183,28 @@ router.post('/answer/:qId', async (req, res) => {
     res.json(answer);
   } else {
     res.status(400).json({ message: 'fucking hacking' });
+  }
+});
+
+router.delete('/:id', async (req, res) => {
+  try {
+    const { id } = req.params;
+
+    const questionsAll = await Category.findOne({
+      include: {
+        model: Question,
+      },
+      where: { id },
+    });
+
+    const idQuest = questionsAll.Questions.map((el) => el.id);
+
+    await Statistic.destroy({
+      where: { qId: idQuest, userId: req.session?.user?.id },
+    });
+    res.sendStatus(200);
+  } catch (err) {
+    console.log(err);
   }
 });
 

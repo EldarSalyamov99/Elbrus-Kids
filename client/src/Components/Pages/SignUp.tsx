@@ -3,8 +3,6 @@ import Form from 'react-bootstrap/Form';
 import authHooks from '../../Features/Redux/hooks/authHooks';
 import { getImgs } from '../../Services/authService';
 
-
-
 export default function SignUp(): JSX.Element {
   const { signUpActionHandler } = authHooks();
   const [password2, setPassword2] = useState('');
@@ -26,7 +24,9 @@ export default function SignUp(): JSX.Element {
       setPasswordError('Пароли не совпадают');
     } else {
       setPasswordError('');
-      signUpActionHandler(e).then((data) => data).catch((err) => console.log(err));
+      signUpActionHandler(e)
+        .then((data) => data)
+        .catch((err) => console.log(err));
     }
   };
 

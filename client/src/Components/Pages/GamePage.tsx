@@ -28,6 +28,7 @@ export default function GamePage(): JSX.Element {
   console.log(Quests);
 
   return (
+
     <div className="container game__page">
       <h1 className="game__title">Посмотри данную лекцию и ответь на вопрос!</h1>
       <ReactPlayer url={Quests[count]?.video} />
@@ -36,5 +37,6 @@ export default function GamePage(): JSX.Element {
         <Buttons count={count} Quest={Quests[count]} clickHandler={clickHandler} />
       </div>
     </div>
+
   );
 }

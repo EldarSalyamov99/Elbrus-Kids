@@ -27,17 +27,23 @@ export default function ModalTHemes({ show, handleClose, themes }: ModalProps): 
           {themes.map((item, index) => (
             <Row key={item.id}>
               <Card>
+              
                 <Button
                   onClick={() => navigate(`/courses/${item.id}`)}
                   disabled={item.progress}
-                  style={{ backgroundColor: 'blue' }}
+                  style={{ backgroundColor: 'blue', marginBottom: '2%' }}
+                  
                 >
                   {item.catName}
                 </Button>
                 {item.progress && (
-                  <Button onClick={() => clickHandler(item.id)} variant="primary">
+                  <Col>
+                  <Row  style={{ marginBottom: '2%' }}>
+                  <Button  style={{ backgroundColor: 'green', width: '95%', marginLeft: '2.4%' }} onClick={() => clickHandler(item.id)} variant="primary">
                     Заново
                   </Button>
+                  </Row>
+                  </Col>
                 )}
               </Card>
             </Row>
@@ -45,8 +51,8 @@ export default function ModalTHemes({ show, handleClose, themes }: ModalProps): 
         </Col>
       </Modal.Body>
       <Modal.Footer>
-        <Button variant="primary" onClick={handleClose}>
-          Close
+        <Button  style={{ backgroundColor: '#cc0000' }} onClick={handleClose}>
+          Закрыть
         </Button>
       </Modal.Footer>
     </Modal>

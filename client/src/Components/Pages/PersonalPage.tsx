@@ -3,14 +3,9 @@ import ModalEdit from './ModalEdit';
 import { useAppSelector } from '../../Features/Redux/hooks/reduxHooks';
 
 export default function PersonalPage(): JSX.Element {
-  const [name, setName] = useState('Vazgen');
-  const [lastName, setLastName] = useState('oG');
-  const [phone, setPhone] = useState('8927272727');
-  const [email, setEmail] = useState('lol.com');
-  const [isModalOpen, setIsModalOpen] = useState(false);
-
+  
 const user = useAppSelector((store) => store.user);
-
+  
   const openModal = (): void => {
     setIsModalOpen(true);
   };
@@ -19,10 +14,10 @@ const user = useAppSelector((store) => store.user);
     setIsModalOpen(false);
   };
 
-  // const handleSave = (): void => {
-  //   // Обработка сохранения данных о пользователе
-  //   closeModal();
-  // };
+  const handleSave = (): void => {
+    // Обработка сохранения данных о пользователе
+    closeModal();
+  };
 
   return (
     <div className="w-3/4 ml-52 mt-28">

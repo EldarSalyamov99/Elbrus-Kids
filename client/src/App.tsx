@@ -23,26 +23,17 @@ function App(): JSX.Element {
     <Routes>
       <Route element={<Layout user={user} />}>
         <Route path="/" element={<MainPage />} />
-<<<<<<< HEAD
         <Route element={<PrivateRoute isAllowed={user.status !== "success"} redirectTo="/" />} >
-        {/* <Route path="/personal" element={<PersonalPage />} /> */}
         <Route path="/signin" element={<SignIn />} />
         <Route path="/signup" element={<SignUp />} />
         </Route>
-        <Route path="/test" element={<Test />} />
         <Route path="/board" element={<Board />} />
         <Route path="/parents" element={<BlogParents />} />
-        </Route>
-      </Routes>
-=======
         <Route path="/personal" element={<PersonalPage />} />
-        <Route path="/signin" element={<SignIn />} />
-        <Route path="/signup" element={<SignUp />} />
         <Route path="/course" element={<Test />} />
         <Route path="/courses/:id" element={<GamePage />} />
-      </Route>
-    </Routes>
->>>>>>> dev
+        </Route>
+      </Routes>
   );
 }
 

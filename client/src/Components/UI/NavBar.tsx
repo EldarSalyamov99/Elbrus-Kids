@@ -42,7 +42,7 @@ export default function NavBar(): JSX.Element {
             </>
             {/* } */}
             <Link className="nav-link" to="/parents">
-              Блог для родителей
+              Для родителей
             </Link>
           </Nav>
           <Nav className="ml-auto">

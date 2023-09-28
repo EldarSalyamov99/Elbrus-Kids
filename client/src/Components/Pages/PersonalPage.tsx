@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 // import React, { useState } from 'react';
 // import ModalEdit from './ModalEdit';
 // import ReactPlayer from 'react-player';
@@ -101,7 +100,7 @@
 //   );
 
 // }
-=======
+
 import React, { useState } from 'react';
 import ModalEdit from './ModalEdit';
 
@@ -189,4 +188,4 @@ export default function PersonalPage(): JSX.Element {
     </div>
   );
 }
->>>>>>> dev
+

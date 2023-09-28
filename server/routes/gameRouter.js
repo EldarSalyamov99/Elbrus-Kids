@@ -183,7 +183,7 @@ router.post('/answer/:qId', async (req, res) => {
 
   const status = answer.filter((el) => el.id === answerId)[0].isCorrect;
 
-  const user = req.session.user.id;
+  const user = req.session?.user?.id;
 
   const [static, created] = await Statistic.findOrCreate({
     where: { userId: user, qId },

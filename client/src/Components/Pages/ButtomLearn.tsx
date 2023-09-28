@@ -3,8 +3,8 @@ import React from 'react';
 export default function ButtonLearn(): JSX.Element {
   return (
     <>
-      <link href="client/style/assets/img/favicon.png" rel="icon" />
-      <link href="client/style/assets/img/apple-touch-icon.png" rel="apple-touch-icon" />
+      <link href="style/assets/img/favicon.png" rel="icon" />
+      <link href="style/assets/img/apple-touch-icon.png" rel="apple-touch-icon" />
 
       {/* Google Fonts */}
       <link
@@ -13,12 +13,12 @@ export default function ButtonLearn(): JSX.Element {
       />
 
       {/* Vendor CSS Files */}
-      <link href="client/style/assets/vendor/aos/aos.css" rel="stylesheet" />
-      <link href="client/style/assets/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet" />
-      <link href="client/style/assets/vendor/bootstrap-icons/bootstrap-icons.css" rel="stylesheet" />
-      <link href="client/style/assets/vendor/glightbox/css/glightbox.min.css" rel="stylesheet" />
-      <link href="client/style/assets/vendor/remixicon/remixicon.css" rel="stylesheet" />
-      <link href="client/style/assets/vendor/swiper/swiper-bundle.min.css" rel="stylesheet" />
+      <link href="style/assets/vendor/aos/aos.cjs.js" rel="stylesheet" />
+      <link href="style/assets/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet" />
+      <link href="style/assets/vendor/bootstrap-icons/bootstrap-icons.css" rel="stylesheet" />
+      <link href="style/assets/vendor/glightbox/css/glightbox.min.css" rel="stylesheet" />
+      <link href="style/assets/vendor/remixicon/remixicon.css" rel="stylesheet" />
+      <link href="style/assets/vendor/swiper/swiper-bundle.min.css" rel="stylesheet" />
 
       {/* Template Main CSS File */}
       <link href="style/assets/css/style.css" rel="stylesheet" />
@@ -26,11 +26,15 @@ export default function ButtonLearn(): JSX.Element {
         <div className="container">
           <div className="row">
             <div className="col-lg-6 d-flex flex-column justify-content-center">
-              <h1 data-aos="fade-up">Изучай HTML, CSS и JS, играя на Elbrus Kids! Наши увлекательные видеоуроки помогут
-              подросткам освоить основы HTML, CSS и JS. Смотри видео, проходи тесты и учись
-              программированию в игровой форме.</h1>
+              <h1 data-aos="fade-up">Изучай HTML, CSS и JS, играя на Elbrus Kids! </h1>
               <h2 data-aos="fade-up" data-aos-delay="400">
+              <p>Наши увлекательные видеоуроки помогут
+              подросткам освоить основы HTML, CSS и JS. Смотри видео, проходи тесты и учись
+              программированию в игровой форме.</p>
+              <p>
+
               Готов начать игру? Нажми кнопку прямо сейчас и прокачай свои навыки веб-разработки!
+              </p>
               </h2>
               <div data-aos="fade-up" data-aos-delay="600">
                 <div className="text-center text-lg-start">

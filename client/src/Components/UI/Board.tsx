@@ -1,13 +1,8 @@
 import React, { useState } from 'react';
 import type { CategoryType } from '../../Types/gameTypes';
-<<<<<<< HEAD
-
-
-=======
 import ModalThemes from './ModalThemes';
 import { useAppDispatch, useAppSelector } from '../../Features/Redux/hooks/reduxHooks';
 import { getThemesThunk } from '../../Features/Redux/thunks/gameThunk';
->>>>>>> dev
 
 type CategoriesType = {
   Categories: CategoryType[];

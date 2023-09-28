@@ -29,7 +29,7 @@ useEffect(()=>{
         <Route element={<Layout user={user} />} >
         <Route path="/" element={<MainPage />} />
         <Route element={<PrivateRoute isAllowed={user.status !== "success"} redirectTo="/" />} >
-        <Route path="/personal" element={<PersonalPage />} />
+        {/* <Route path="/personal" element={<PersonalPage />} /> */}
         <Route path="/signin" element={<SignIn />} />
         <Route path="/signup" element={<SignUp />} />
         </Route>
@@ -38,7 +38,7 @@ useEffect(()=>{
         <Route path="/parents" element={<BlogParents />} />
         </Route>
       </Routes>
-
+  );
 }
 
 export default App;

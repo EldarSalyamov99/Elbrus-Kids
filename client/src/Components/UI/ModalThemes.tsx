@@ -1,7 +1,9 @@
+/* eslint-disable react/button-has-type */
 import React from 'react';
 import { Button, Modal, Row, Col, Card } from 'react-bootstrap';
-import { Link } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 import type { ThemesType } from '../../Types/gameTypes';
+import apiClient from '../../Services/apiConfig';
 
 type ModalProps = {
   handleClose: () => void;
@@ -10,18 +12,35 @@ type ModalProps = {
 };
 
 export default function ModalTHemes({ show, handleClose, themes }: ModalProps): JSX.Element {
+  const navigate = useNavigate();
+
+  const clickHandler = async (id: number): void => {
+    await apiClient.delete(`/game/${id}`);
+    navigate(`/courses/${id}`);
+  };
+
+  console.log('themes', themes);
   return (
     <Modal show={show} onHide={handleClose}>
       <Modal.Body>
         <Col>
           {themes.map((item, index) => (
-            <Link to={`/courses/${item.id}`}>
-              <Row key={item.id}>
-                <Card>
-                  <Card.Body>{item.catName}</Card.Body>
-                </Card>
-              </Row>
-            </Link>
+            <Row key={item.id}>
+              <Card>
+                <Button
+                  onClick={() => navigate(`/courses/${item.id}`)}
+                  disabled={item.progress}
+                  style={{ backgroundColor: 'blue' }}
+                >
+                  {item.catName}
+                </Button>
+                {item.progress && (
+                  <Button onClick={() => clickHandler(item.id)} variant="primary">
+                    Заново
+                  </Button>
+                )}
+              </Card>
+            </Row>
           ))}
         </Col>
       </Modal.Body>

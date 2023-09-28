@@ -1,7 +1,9 @@
 import React, { useState } from 'react';
 import authHooks from '../../Features/Redux/hooks/authHooks';
 
-export default function SignUp(): JSX.Element {
+
+
+export default function SignUp():JSX.Element {
   const { signUpActionHandler } = authHooks();
 
   const [password2, setPassword2] = useState('');
@@ -21,9 +23,6 @@ export default function SignUp(): JSX.Element {
       signUpActionHandler(e).then((data) => data).catch((err) => console.log(err));
     }
   };
-
-export default function SignUp():JSX.Element {
-    const {signUpActionHandler} = authHooks()
   return (
     <form onSubmit={handleSubmit} className="flex grow items-center justify-center">
       <div className="relative flex flex-col py-40 space-y-2 w-96">

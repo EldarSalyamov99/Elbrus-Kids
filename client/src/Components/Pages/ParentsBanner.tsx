@@ -26,49 +26,38 @@ export default function ParentsBanner(): JSX.Element {
       {/* Template Main CSS File */}
       <link href="style/assets/css/style.css" rel="stylesheet" />
 
+      {/* About Section */}
+      <section id="about" className="about">
 
-        {/* About Section */}
-        <section id="about" className="about">
-          <div className="container" data-aos="fade-up">
-            <div className="row gx-0">
-              <div
-                className="col-lg-6 d-flex flex-column justify-content-center"
-                data-aos="fade-up"
-                data-aos-delay="200"
-              >
-                <div className="content">
-                  <h3>Как помочь ребенку?</h3>
-                  <h2>
-                    Подарите вашим детям возможность изучить HTML, CSS и JS, играя на Elbrus Kids!
-                  </h2>
-                  <p>
-                    Наши увлекательные видеоуроки помогут подросткам освоить основы веб-разработки.
-                    Смотри видео, проходи тесты и проверяй свои знания в игровой форме. Дайте им
-                    шанс развить важные навыки программирования и открыть двери к технологическому
-                    будущему.
-                  </p>
-                  <div className="text-center text-lg-start">
-                    <a
-                      href="/parents"
-                      className="btn-read-more d-inline-flex align-items-center justify-content-center align-self-center"
-                    >
-                      <span>Читать дальше</span>
-                      <i className="bi bi-arrow-right" />
-                    </a>
-                  </div>
-                </div>
-              </div>
+      <div className="container" data-aos="fade-up">
+        <div className="row gx-0">
+          <div className="col-lg-6 d-flex align-items-center" data-aos="zoom-out" data-aos-delay="200">
+            <img src="style/assets/img/features-2.png" className="img-fluid" alt=""/>
+          </div>
 
-              <div
-                className="col-lg-6 d-flex align-items-center"
-                data-aos="zoom-out"
-                data-aos-delay="200"
-              >
-                <img src="assets/img/about.jpg" className="img-fluid" alt="" />
+          <div className="col-lg-6 d-flex flex-column justify-content-center" data-aos="fade-up" data-aos-delay="200">
+            <div className="content">
+              <h3>Как помочь ребенку?</h3>
+              <h2>Подарите вашим детям возможность изучить HTML, CSS и JS, играя на Elbrus Kids!</h2>
+              <p>Наши увлекательные видеоуроки помогут подросткам освоить основы веб-разработки.
+                  Смотри видео, проходи тесты и проверяй свои знания в игровой форме. Дайте им шанс
+                  развить важные навыки программирования и открыть двери к технологическому
+                  будущему.</p>
+              <div className="text-center text-lg-start">
+                <a href="/parents" className="btn-read-more d-inline-flex align-items-center justify-content-center align-self-center">
+                  <span>Читать дальше</span>
+                  <i className="bi bi-arrow-right"></i>
+                </a>
               </div>
             </div>
           </div>
-        </section>
+
+
+        </div>
+      </div>
+
+    </section>
+
     </>
   );
 }

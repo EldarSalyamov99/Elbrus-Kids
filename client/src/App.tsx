@@ -29,7 +29,7 @@ function App(): JSX.Element {
         <Route path="/" element={<MainPage />} />=
         <Route element={<PrivateRoute isAllowed={user.status !== 'success'} redirectTo="/" />}>
           <Route path="/signin" element={<SignIn />} />
-          <Route path="/signup" element={<SignUp />} />
+          {/* <Route path="/signup" element={<SignUp />} /> */}
         </Route>
         <Route path="/board" element={<Board />} />
         <Route path="/parents" element={<ParentsPage />} />

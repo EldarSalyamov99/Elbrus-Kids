@@ -22,6 +22,8 @@ export default function SignUp(): JSX.Element {
     }
   };
 
+export default function SignUp():JSX.Element {
+    const {signUpActionHandler} = authHooks()
   return (
     <form onSubmit={handleSubmit} className="flex grow items-center justify-center">
       <div className="relative flex flex-col py-40 space-y-2 w-96">

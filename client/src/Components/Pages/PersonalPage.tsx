@@ -5,20 +5,17 @@ import { useAppSelector } from '../../Features/Redux/hooks/reduxHooks';
 export default function PersonalPage(): JSX.Element {
   
 const user = useAppSelector((store) => store.user);
-  
+ 
   const openModal = (): void => {
     setIsModalOpen(true);
   };
-
   const closeModal = (): void => {
     setIsModalOpen(false);
   };
-
   const handleSave = (): void => {
     // Обработка сохранения данных о пользователе
     closeModal();
   };
-
   return (
     <div className="w-3/4 ml-52 mt-28">
       <section className="flex flex-row border-b-2 border-gray-200 pb-8 md:flex-row md:gap-8">
@@ -47,7 +44,6 @@ const user = useAppSelector((store) => store.user);
         </button>
         {isModalOpen && <ModalEdit setIsModalOpen={setIsModalOpen} user ={user} closeModal={closeModal} />}
       </section>
-
       <section>
         <h2 className="mb-5 text-2xl font-bold">Статистика</h2>
         <div className="grid grid-cols-2 gap-3">
@@ -82,3 +78,4 @@ const user = useAppSelector((store) => store.user);
     </div>
   );
 }
+

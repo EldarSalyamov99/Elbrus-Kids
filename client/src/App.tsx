@@ -15,14 +15,19 @@ function App(): JSX.Element {
   const user = useAppSelector((state) => state.user);
   const dispatch = useAppDispatch();
 
-  useEffect(() => {
-    void dispatch(userCheckActionThunk());
-  }, []);
+
+useEffect(()=>{
+  setTimeout(() =>{
+  void dispatch(userCheckActionThunk())
+},1000)
+},[])
+
 
   return (
     <Routes>
       <Route element={<Layout user={user} />}>
         <Route path="/" element={<MainPage />} />
+=
         <Route element={<PrivateRoute isAllowed={user.status !== "success"} redirectTo="/" />} >
         <Route path="/signin" element={<SignIn />} />
         <Route path="/signup" element={<SignUp />} />

@@ -7,6 +7,7 @@ export default function authHooks(): {
   signUpActionHandler: (e: React.FormEvent<HTMLFormElement>) => Promise<void>;
   signInActionHandler: (e: React.FormEvent<HTMLFormElement>) => Promise<void>;
   signOutActionHandler: (e: React.MouseEvent<HTMLElement>) => Promise<void>;
+
   updateUserActionHandler: (e: React.FormEvent<HTMLFormElement>) => Promise<void>;
 } {
   // eslint-disable-next-line react-hooks/rules-of-hooks
@@ -18,6 +19,7 @@ export default function authHooks(): {
       e.preventDefault();
       const formData = new FormData(e.currentTarget);
       const data = await signUpService(formData);
+
       console.log(data);
       
       dispatch(setUser(data));
@@ -26,7 +28,6 @@ export default function authHooks(): {
       dispatch(setUserErr());
     }
   };
-
   const signInActionHandler = async (e: React.FormEvent<HTMLFormElement>): Promise<void> => {
     try {
       e.preventDefault();
@@ -38,7 +39,6 @@ export default function authHooks(): {
       dispatch(setUserErr());
     }
   };
-
   const signOutActionHandler = async (e: React.MouseEvent<HTMLElement>): Promise<void> => {
     try {
       e.preventDefault();

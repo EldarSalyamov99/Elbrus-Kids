@@ -14,5 +14,7 @@ export default function Test(): JSX.Element {
     void dispatch(getLevelThunk());
   }, []);
 
+
   return <Board Categories={Categories} />;
+
 }

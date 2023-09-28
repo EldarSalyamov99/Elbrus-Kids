@@ -1,4 +1,6 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
+
 
 export default function ButtonLearn(): JSX.Element {
   return (
@@ -38,13 +40,13 @@ export default function ButtonLearn(): JSX.Element {
               </h2>
               <div data-aos="fade-up" data-aos-delay="600">
                 <div className="text-center text-lg-start">
-                  <a
-                    href="/course"
+                  <Link
+                    to="/course"
                     className="btn-get-started scrollto d-inline-flex align-items-center justify-content-center align-self-center"
                   >
                     <span>Учиться</span>
                     <i className="bi bi-arrow-right"></i>
-                  </a>
+                  </Link>
                 </div>
               </div>
             </div>

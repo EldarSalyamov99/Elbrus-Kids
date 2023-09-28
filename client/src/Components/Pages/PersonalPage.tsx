@@ -1,9 +1,10 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import ModalEdit from './ModalEdit';
 import { useAppSelector } from '../../Features/Redux/hooks/reduxHooks';
+import { getImgs } from '../../Services/authService';
 
 export default function PersonalPage(): JSX.Element {
-  
+
 const user = useAppSelector((store) => store.user);
  const [isModalOpen, setIsModalOpen] = useState(false);
   const openModal = (): void => {
@@ -16,11 +17,16 @@ const user = useAppSelector((store) => store.user);
     // Обработка сохранения данных о пользователе
     closeModal();
   };
+  console.log(user);
+
+
+
+  
   return (
     <div className="w-3/4 ml-52 mt-28">
       <section className="flex flex-row border-b-2 border-gray-200 pb-8 md:flex-row md:gap-8">
         <div className="flex h-20 w-20 items-center justify-center rounded-full border-2 border-dashed border-gray-400 text-3xl font-bold text-gray-400 md:h-44 md:w-44 md:text-7xl">
-          U
+          <img style={{ height: '100%', borderRadius: '50%' }} src={`/images/${user.status === 'success' ? user.user.img : ''}.jpg`} alt="" />
         </div>
         <div className="flex grow flex-col justify-between gap-3">
           <div className="flex flex-col gap-2">
@@ -28,7 +34,7 @@ const user = useAppSelector((store) => store.user);
               <h1 className="text-2xl font-bold">{user.status === 'success' ? user.user.name : ''}</h1>
             </div>
             <div className="flex items-center gap-3">
-              <span className="text-gray-500"> {user.status === 'success' ? `Номер телефона:${user.user.phone}` : ''}</span>
+              <span className="text-gray-500"> {user.status === 'success' ? `Номер телефона:${user.user.phone}` :  ''}</span>
             </div>
             <div className="flex items-center gap-3">
               <span className="text-gray-500">{user.status === 'success' ? user.user.email : ''}</span>

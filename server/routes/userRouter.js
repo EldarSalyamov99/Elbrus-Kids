@@ -1,12 +1,15 @@
 const express = require('express');
 const bcrypt = require('bcrypt');
+const fs = require('fs/promises');
 const { User } = require('../db/models');
 const mailer = require('../nodemailer');
 
 const router = express.Router();
 
 router.post('/signup', async (req, res) => {
-  const { name, phone, email, password } = req.body;
+  const {
+    name, phone, email, password, img,
+  } = req.body;
 
   const message = {
     to: req.body.email,
@@ -19,12 +22,14 @@ router.post('/signup', async (req, res) => {
   };
   mailer(message);
 
-  if (name && email && password) {
+  if (name && email && password && img) {
     try {
       const hashpass = await bcrypt.hash(password, 10);
       const [user, created] = await User.findOrCreate({
         where: { email },
-        defaults: { name, phone, hashpass },
+        defaults: {
+          name, phone, hashpass, img,
+        },
       });
       if (!created) return res.status(401).json({ message: 'Пользователь с таким email уже  зарегистрирован' });
 
@@ -88,6 +93,16 @@ router.patch('/update', async (req, res) => {
   } catch (err) {
     console.error(err);
     return res.sendStatus(500);
+  }
+});
+
+router.get('/img', async (req, res) => {
+  try {
+    const images = await fs.readdir('public/images');
+    res.json(images);
+  } catch (err) {
+    console.error(err);
+    res.sendStatus(500);
   }
 });
 

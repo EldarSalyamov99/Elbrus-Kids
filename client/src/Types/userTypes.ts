@@ -12,6 +12,7 @@ export type UserType = {
   name: string;
   email: string;
   phone: string;
+  img: string;
 };
 
 export type UpdateUserType = {

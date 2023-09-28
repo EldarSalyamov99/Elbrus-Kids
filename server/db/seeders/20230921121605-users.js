@@ -279,7 +279,7 @@ module.exports = {
       },
       {
         questions:
-          ' Какое свойство в CSS используется для выравнивания элементов вдоль главной оси flex-контейнера?',
+          'Какое свойство в CSS используется для выравнивания элементов вдоль главной оси flex-контейнера?',
         catId: 5,
         createdAt: new Date(),
         updatedAt: new Date(),
@@ -287,7 +287,7 @@ module.exports = {
       },
       {
         questions: 'Что такое класс в JavaScript?',
-        catId: 6,
+        catId: 8,
         createdAt: new Date(),
         updatedAt: new Date(),
         video:
@@ -295,7 +295,7 @@ module.exports = {
       },
       {
         questions: 'Как создать экземпляр класса в JavaScript?',
-        catId: 6,
+        catId: 8,
         createdAt: new Date(),
         updatedAt: new Date(),
         video:
@@ -303,7 +303,7 @@ module.exports = {
       },
       {
         questions: 'Что такое конструктор класса?',
-        catId: 6,
+        catId: 8,
         createdAt: new Date(),
         updatedAt: new Date(),
         video:
@@ -311,7 +311,7 @@ module.exports = {
       },
       {
         questions: 'Как добавить метод в класс в JavaScript?',
-        catId: 6,
+        catId: 8,
         createdAt: new Date(),
         updatedAt: new Date(),
         video:
@@ -319,7 +319,7 @@ module.exports = {
       },
       {
         questions: 'Что такое наследование классов в JavaScript?',
-        catId: 6,
+        catId: 8,
         createdAt: new Date(),
         updatedAt: new Date(),
         video:
@@ -327,7 +327,7 @@ module.exports = {
       },
       {
         questions: 'Как создать дочерний класс в JavaScript?',
-        catId: 6,
+        catId: 8,
         createdAt: new Date(),
         updatedAt: new Date(),
         video:
@@ -335,7 +335,7 @@ module.exports = {
       },
       {
         questions: 'Как вызвать метод родительского класса из дочернего класса?',
-        catId: 6,
+        catId: 8,
         createdAt: new Date(),
         updatedAt: new Date(),
         video:
@@ -343,7 +343,7 @@ module.exports = {
       },
       {
         questions: 'Что такое полиморфизм в контексте классов в JavaScript?',
-        catId: 6,
+        catId: 8,
         createdAt: new Date(),
         updatedAt: new Date(),
         video:
@@ -351,7 +351,7 @@ module.exports = {
       },
       {
         questions: 'Что такое статические методы в классах в JavaScript?',
-        catId: 6,
+        catId: 9,
         createdAt: new Date(),
         updatedAt: new Date(),
         video:
@@ -359,7 +359,7 @@ module.exports = {
       },
       {
         questions: 'Что такое инкапсуляция в контексте классов в JavaScript?',
-        catId: 6,
+        catId: 9,
         createdAt: new Date(),
         updatedAt: new Date(),
         video:
@@ -367,7 +367,7 @@ module.exports = {
       },
       {
         questions: 'Какой метод массива используется для добавления элемента в конец массива?',
-        catId: 7,
+        catId: 9,
         createdAt: new Date(),
         updatedAt: new Date(),
         video:
@@ -375,15 +375,15 @@ module.exports = {
       },
       {
         questions: 'Какой метод массива используется для удаления последнего элемента массива?',
-        catId: 7,
+        catId: 9,
         createdAt: new Date(),
         updatedAt: new Date(),
         video:
           'https://www.youtube.com/watch?v=IpsoddCpXUY&ab_channel=%D0%A4%D1%80%D0%BE%D0%BD%D1%82%D0%B5%D0%BD%D0%B4%D0%BF%D1%80%D0%BE%D1%81%D1%82%D1%8B%D0%BC%D0%B8%D1%81%D0%BB%D0%BE%D0%B2%D0%B0%D0%BC%D0%B8nullnull',
       },
       {
-        questions: '',
-        catId: 7,
+        questions: 'dsffdsdsf',
+        catId: 9,
         createdAt: new Date(),
         updatedAt: new Date(),
         video:
@@ -391,7 +391,7 @@ module.exports = {
       },
       {
         questions: 'Какой метод массива используется для объединения двух массивов в один?',
-        catId: 7,
+        catId: 9,
         createdAt: new Date(),
         updatedAt: new Date(),
         video:
@@ -400,7 +400,7 @@ module.exports = {
       {
         questions:
           'Какой метод массива используется для проверки наличия определенного элемента в массиве?',
-        catId: 7,
+        catId: 9,
         createdAt: new Date(),
         updatedAt: new Date(),
         video:
@@ -409,7 +409,7 @@ module.exports = {
       {
         questions:
           'Какой метод массива используется для сортировки элементов массива в порядке возрастания?',
-        catId: 7,
+        catId: 9,
         createdAt: new Date(),
         updatedAt: new Date(),
         video:
@@ -418,7 +418,7 @@ module.exports = {
       {
         questions:
           'Какой метод массива используется для поиска индекса определенного элемента в массиве?',
-        catId: 7,
+        catId: 9,
         createdAt: new Date(),
         updatedAt: new Date(),
         video:
@@ -427,7 +427,7 @@ module.exports = {
       {
         questions:
           'Какой метод массива используется для преобразования каждого элемента массива и создания нового массива с результатами?',
-        catId: 7,
+        catId: 9,
         createdAt: new Date(),
         updatedAt: new Date(),
         video:
@@ -436,7 +436,7 @@ module.exports = {
       {
         questions:
           'Какой метод массива используется для фильтрации элементов массива с помощью заданного условия?',
-        catId: 7,
+        catId: 9,
         createdAt: new Date(),
         updatedAt: new Date(),
         video:
@@ -444,7 +444,7 @@ module.exports = {
       },
       {
         questions: 'Какой метод массива используется для получения первого элемента массива?',
-        catId: 7,
+        catId: 9,
         createdAt: new Date(),
         updatedAt: new Date(),
         video:
@@ -452,7 +452,7 @@ module.exports = {
       },
       {
         questions: 'Какой метод массива используется для получения количества элементов в массиве?',
-        catId: 7,
+        catId: 9,
         createdAt: new Date(),
         updatedAt: new Date(),
         video:

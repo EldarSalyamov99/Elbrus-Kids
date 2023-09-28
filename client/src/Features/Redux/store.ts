@@ -2,12 +2,16 @@ import { configureStore } from '@reduxjs/toolkit';
 import userReducer from './Slices/userSlice';
 import gameReducer from './Slices/gameSlice';
 import levelReducer from './Slices/levelSlice';
+import themeReducer from './Slices/themesSlice';
+import questReducer from './Slices/QuestsSlice';
 
 export const store = configureStore({
   reducer: {
     user: userReducer,
     game: gameReducer,
     level: levelReducer,
+    themes: themeReducer,
+    quests: questReducer,
   },
 });
 

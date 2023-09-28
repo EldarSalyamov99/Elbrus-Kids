@@ -5,9 +5,12 @@ import { Provider } from 'react-redux';
 import App from './App';
 import { store } from './Features/Redux/store';
 import 'bootstrap/dist/css/bootstrap.min.css';
+<<<<<<< HEAD
+=======
+
+>>>>>>> dev
 import 'tailwindcss/tailwind.css';
 import 'react-circular-progressbar/dist/styles.css';
-
 
 ReactDOM.createRoot(document.getElementById('root') as HTMLElement).render(
   <Provider store={store}>

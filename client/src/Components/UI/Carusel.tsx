@@ -38,7 +38,7 @@ function ControlledCarousel(): JSX.Element {
           <img
             style={{ height: '500px', width: '100%', objectFit: 'cover' }}
             className="d-block w-100"
-            src="https://mayak.travel/m/picture/8/58/1240x520.dfcfb20029c8bcd5ac6c3525afb3d970c376ebb7f254b7edf7bda9045a5e1e4a.png"
+            src="/image/эльбрус.jpg"
             alt="First Slide"
           />
         </Carousel.Item>
@@ -46,7 +46,7 @@ function ControlledCarousel(): JSX.Element {
           <img
             style={{ height: '500px', width: '100%', objectFit: 'cover' }}
             className="d-block w-100"
-            src="https://media.proglib.io/events/2020/12/08/cee561949aac183a37108ed4658e48c1.jpg"
+            src="https://mayak.travel/m/picture/8/58/1240x520.dfcfb20029c8bcd5ac6c3525afb3d970c376ebb7f254b7edf7bda9045a5e1e4a.png"
             alt="Second Slide"
           />
         </Carousel.Item>
@@ -54,7 +54,7 @@ function ControlledCarousel(): JSX.Element {
           <img
             style={{ height: '500px', width: '100%', objectFit: 'cover' }}
             className="d-block w-100"
-            src="https://catherineasquithgallery.com/uploads/posts/2021-03/1614610387_167-p-zadnii-fon-dlya-fotoshopa-238.jpg"
+            src="/image/эльбрус.jpg"
             alt="Third Slide"
           />
         </Carousel.Item>

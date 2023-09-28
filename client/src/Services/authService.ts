@@ -36,3 +36,9 @@ export function updateUserServise(formData: FormData): Promise<UserType> {
     .then(({ data }) => data)
     .catch((err) => Promise.reject(err));
 }
+export function getImgs(): Promise<string[]> {
+  return apiClient
+    .get<string[]>('/auth/img')
+    .then(({ data }) => data)
+    .catch((err) => Promise.reject(err));
+}

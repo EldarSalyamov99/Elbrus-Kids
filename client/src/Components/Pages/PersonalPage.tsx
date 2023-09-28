@@ -1,12 +1,5 @@
-
 import React, { useState } from 'react';
 import ModalEdit from './ModalEdit';
-
-
-
-
-import ReactPlayer from 'react-player';
-
 
 export default function PersonalPage(): JSX.Element {
   const [name, setName] = useState('Vazgen');
@@ -15,17 +8,6 @@ export default function PersonalPage(): JSX.Element {
   const [email, setEmail] = useState('lol.com');
   const [isModalOpen, setIsModalOpen] = useState(false);
 
-  const openModal = (e): void => {
-    console.log(e);
-
-    e.preventDefault();
-    setIsModalOpen(true);
-  };
-  const closeModal = (): void => {
-    setIsModalOpen(false);
-  };
-=======
-
   const openModal = (): void => {
     setIsModalOpen(true);
   };
@@ -33,7 +15,6 @@ export default function PersonalPage(): JSX.Element {
   const closeModal = (): void => {
     setIsModalOpen(false);
   };
-
 
   const handleSave = (): void => {
     // Обработка сохранения данных о пользователе
@@ -103,5 +84,4 @@ export default function PersonalPage(): JSX.Element {
       </section>
     </div>
   );
-
 }

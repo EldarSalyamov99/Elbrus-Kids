@@ -6,7 +6,7 @@ import App from './App';
 import { store } from './Features/Redux/store';
 
 import 'bootstrap/dist/css/bootstrap.min.css';
-=======
+
 import 'tailwindcss/tailwind.css';
 
 import 'react-circular-progressbar/dist/styles.css';

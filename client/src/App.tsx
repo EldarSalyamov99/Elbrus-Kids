@@ -3,7 +3,6 @@ import { Route, Routes } from 'react-router-dom';
 import MainPage from './Components/Pages/MainPage';
 import PersonalPage from './Components/Pages/PersonalPage';
 
-import NavBar from './Components/UI/NavBar';
 
 import SignIn from './Components/Pages/SignIn';
 import SignUp from './Components/Pages/SignUp';
@@ -28,8 +27,8 @@ useEffect(()=>{
       <Routes>
         <Route element={<Layout user={user} />} >
         <Route path="/" element={<MainPage />} />
-        <Route element={<PrivateRoute isAllowed={user.status !== "success"} redirectTo="/" />} >
         <Route path="/personal" element={<PersonalPage />} />
+        <Route element={<PrivateRoute isAllowed={user.status !== "success"} redirectTo="/" />} >
         <Route path="/signin" element={<SignIn />} />
         <Route path="/signup" element={<SignUp />} />
         </Route>
@@ -38,7 +37,7 @@ useEffect(()=>{
         <Route path="/parents" element={<BlogParents />} />
         </Route>
       </Routes>
-
+  )
 }
 
 export default App;

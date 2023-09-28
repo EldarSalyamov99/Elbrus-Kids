@@ -1,12 +1,6 @@
-
 import React, { useState } from 'react';
 import ModalEdit from './ModalEdit';
-
-
-
-
-import ReactPlayer from 'react-player';
-
+import { useAppSelector } from '../../Features/Redux/hooks/reduxHooks';
 
 export default function PersonalPage(): JSX.Element {
   const [name, setName] = useState('Vazgen');
@@ -15,16 +9,7 @@ export default function PersonalPage(): JSX.Element {
   const [email, setEmail] = useState('lol.com');
   const [isModalOpen, setIsModalOpen] = useState(false);
 
-  const openModal = (e): void => {
-    console.log(e);
-
-    e.preventDefault();
-    setIsModalOpen(true);
-  };
-  const closeModal = (): void => {
-    setIsModalOpen(false);
-  };
-=======
+const user = useAppSelector((store) => store.user);
 
   const openModal = (): void => {
     setIsModalOpen(true);
@@ -34,11 +19,10 @@ export default function PersonalPage(): JSX.Element {
     setIsModalOpen(false);
   };
 
-
-  const handleSave = (): void => {
-    // Обработка сохранения данных о пользователе
-    closeModal();
-  };
+  // const handleSave = (): void => {
+  //   // Обработка сохранения данных о пользователе
+  //   closeModal();
+  // };
 
   return (
     <div className="w-3/4 ml-52 mt-28">
@@ -49,14 +33,13 @@ export default function PersonalPage(): JSX.Element {
         <div className="flex grow flex-col justify-between gap-3">
           <div className="flex flex-col gap-2">
             <div>
-              <h1 className="text-2xl font-bold">Vazgen</h1>
-              <div className="text-sm text-gray-400">Kirakosyan</div>
+              <h1 className="text-2xl font-bold">{user.status === 'success' ? user.user.name : ''}</h1>
             </div>
             <div className="flex items-center gap-3">
-              <span className="text-gray-500">777</span>
+              <span className="text-gray-500"> {user.status === 'success' ? `Номер телефона:${user.user.phone}` : ''}</span>
             </div>
             <div className="flex items-center gap-3">
-              <span className="text-gray-500">999</span>
+              <span className="text-gray-500">{user.status === 'success' ? user.user.email : ''}</span>
             </div>
           </div>
         </div>
@@ -65,13 +48,13 @@ export default function PersonalPage(): JSX.Element {
           onClick={openModal}
           className="hidden items-center gap-2 self-start rounded-2xl border-b-4 border-blue-500 bg-blue-400 px-5 py-3 font-bold uppercase text-white transition hover:brightness-110 md:flex"
         >
-          Edit profile
+          Изменить данные
         </button>
-        {isModalOpen && <ModalEdit setIsModalOpen={setIsModalOpen} closeModal={closeModal} />}
+        {isModalOpen && <ModalEdit setIsModalOpen={setIsModalOpen} user ={user} closeModal={closeModal} />}
       </section>
 
       <section>
-        <h2 className="mb-5 text-2xl font-bold">Statistics</h2>
+        <h2 className="mb-5 text-2xl font-bold">Статистика</h2>
         <div className="grid grid-cols-2 gap-3">
           <div className="flex gap-2 rounded-2xl border-2 border-gray-200 p-2 md:gap-3 md:px-6 md:py-4">
             ttt
@@ -103,5 +86,4 @@ export default function PersonalPage(): JSX.Element {
       </section>
     </div>
   );
-
 }

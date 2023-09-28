@@ -30,9 +30,9 @@ export function authCheckService(): Promise<UserType> {
     .catch((err) => Promise.reject(err));
 }
 
-export function updateUserServise(formData: FormData): Promise<UpdateUserType> {
+export function updateUserServise(formData: FormData): Promise<UserType> {
   return apiClient
-    .patch<UpdateUserType>('/:id', Object.fromEntries(formData))
+    .patch<UpdateUserType>(`/auth/update`, Object.fromEntries(formData))
     .then(({ data }) => data)
     .catch((err) => Promise.reject(err));
 }

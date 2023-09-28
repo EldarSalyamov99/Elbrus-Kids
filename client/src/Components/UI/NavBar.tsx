@@ -31,7 +31,7 @@ export default function NavBar(): JSX.Element {
             <Link className="navbar-brand" to="/">
               Elbrus-Kids
             </Link>
-            {/* {user.status === 'success' && */}
+            {user.status === 'success' &&
             <>
             <Link className="nav-link" to="/personal">
               Профиль
@@ -40,7 +40,7 @@ export default function NavBar(): JSX.Element {
               Учиться
             </Link>
             </>
-            {/* } */}
+             } 
             <Link className="nav-link" to="/parents">
               Для родителей
             </Link>

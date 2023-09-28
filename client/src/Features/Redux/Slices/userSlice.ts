@@ -1,6 +1,6 @@
 import type { PayloadAction} from "@reduxjs/toolkit";
 import { createSlice } from "@reduxjs/toolkit";
-import type { AuthUserType, UserType } from "../../../Types/userTypes";
+import type { AuthUserType, UpdateUserType, UserType } from "../../../Types/userTypes";
 import { userCheckActionThunk } from "../Actions/userAction";
 
 
@@ -18,7 +18,7 @@ export const userSlice = createSlice({
         setUserErr: (state) =>({
             status: 'failed',
         }),
-        
+
     },
     extraReducers: (builder) => {
         builder.addCase(userCheckActionThunk.pending, (state, action) =>{

@@ -26,7 +26,7 @@ router.post('/signup', async (req, res) => {
         where: { email },
         defaults: { name, phone, hashpass },
       });
-      if (!created) return res.status(401).json({ message: 'User already exists' });
+      if (!created) return res.status(401).json({ message: 'Пользователь с таким email уже  зарегистрирован' });
 
       const sessionUser = JSON.parse(JSON.stringify(user));
       delete sessionUser.password;
@@ -43,6 +43,7 @@ router.post('/signup', async (req, res) => {
 
 router.post('/signin', async (req, res) => {
   const { email, password } = req.body;
+  console.log(req.body);
   if (email && password) {
     try {
       const user = await User.findOne({
@@ -65,9 +66,11 @@ router.post('/signin', async (req, res) => {
   return res.status(500).json({ message: 'No email or password' });
 });
 
-router.get('/check', (req, res) => {
+router.get('/check', async (req, res) => {
   if (req.session.user) {
-    return res.json(req.session.user);
+    const user = await User.findByPk(req.session.user.id);
+    console.log(user);
+    return res.json(user);
   }
   return res.sendStatus(401);
 });
@@ -76,10 +79,10 @@ router.get('/logout', (req, res) => {
   req.session.destroy();
   res.clearCookie('sid').sendStatus(200);
 });
-router.patch('/:id', async (req, res) => {
+router.patch('/update', async (req, res) => {
   try {
-    const { id } = req.params;
-    await User.update({ ...req.body }, { where: { id } });
+    const { id } = req.session.user;
+    await User.update(req.body, { where: { id } });
     const updateUser = await User.findOne({ where: { id } });
     return res.json(updateUser);
   } catch (err) {

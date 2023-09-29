@@ -14,36 +14,43 @@ type ModalProps = {
 export default function ModalTHemes({ show, handleClose, themes }: ModalProps): JSX.Element {
   const navigate = useNavigate();
 
-  const clickHandler = async (id: number): void => {
+  const clickHandler = async (e, id: number): void => {
     await apiClient.delete(`/game/${id}`);
     navigate(`/courses/${id}`);
   };
 
   console.log('themes', themes);
   return (
-    <Modal show={show} onHide={handleClose}>
+    <Modal style={{ borderRadius: '20px' }} show={show} onHide={handleClose}>
       <Modal.Body>
         <Col>
           {themes.map((item, index) => (
-            <Row key={item.id}>
-              <Card>
-              
+            <Row key={item.id} style={{ border: 'none' }}>
+              <Card
+                style={{
+                  display: 'flex',
+                  flexDirection: 'row',
+                  justifyContent: 'space-around',
+                  border: 'none',
+                  marginBottom: '20px',
+                }}
+              >
                 <Button
                   onClick={() => navigate(`/courses/${item.id}`)}
                   disabled={item.progress}
-                  style={{ backgroundColor: 'blue', marginBottom: '2%' }}
-                  
+                  className="rounded-2xl border-b-4 border-blue-500 bg-blue-400 py-3 font-bold uppercase text-white transition hover:brightness-110"
+                  variant="primary"
                 >
-                  {item.catName}
+                  Тема: {item.catName}
                 </Button>
                 {item.progress && (
-                  <Col>
-                  <Row  style={{ marginBottom: '2%' }}>
-                  <Button  style={{ backgroundColor: 'green', width: '95%', marginLeft: '2.4%' }} onClick={() => clickHandler(item.id)} variant="primary">
-                    Заново
-                  </Button>
-                  </Row>
-                  </Col>
+                  <button
+                    className="rounded-2xl border-b-4 border-green-500 bg-green-400 py-3 font-bold uppercase text-white transition hover:brightness-110"
+                    style={{ width: '150px' }}
+                    onClick={(e) => clickHandler(e, item.id)}
+                  >
+                    Повторить
+                  </button>
                 )}
               </Card>
             </Row>
@@ -51,9 +58,13 @@ export default function ModalTHemes({ show, handleClose, themes }: ModalProps): 
         </Col>
       </Modal.Body>
       <Modal.Footer>
-        <Button  style={{ backgroundColor: '#cc0000' }} onClick={handleClose}>
+        <button
+          className="rounded-2xl border-b-4 border-red-500 bg-red-400 py-3 font-bold uppercase text-white transition hover:brightness-110"
+          style={{ width: '100%' }}
+          onClick={handleClose}
+        >
           Закрыть
-        </Button>
+        </button>
       </Modal.Footer>
     </Modal>
   );

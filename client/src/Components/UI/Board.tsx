@@ -32,6 +32,7 @@ export default function Board({ Categories }: CategoriesType): JSX.Element {
             className={`categories ${
               i++ % 2 === 0 ? 'right' : 'left'
             } rounded-2xl border-b-4 border-blue-500 bg-blue-400 py-3 font-bold uppercase text-white transition hover:brightness-110`}
+            style={{ borderRadius: '100%' }}
           >
             <div style={{ visibility: 'visible' }} key={el.id}>
               <h1>{el.catName}</h1>

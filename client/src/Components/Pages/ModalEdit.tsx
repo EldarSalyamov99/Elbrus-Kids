@@ -12,7 +12,7 @@ type ModalEditProps = {
 function ModalEdit({ user, setIsModalOpen, closeModal }: ModalEditProps): JSX.Element {
   return (
     // <div className="modal show" style={{ display: 'block', position: 'initial' }}>
-    <Modal   show={setIsModalOpen} onHide={closeModal}>
+    <Modal show={setIsModalOpen} onHide={closeModal}>
       <Modal.Dialog>
         <ModalComponentForm closeModal={closeModal} user={user} />
       </Modal.Dialog>

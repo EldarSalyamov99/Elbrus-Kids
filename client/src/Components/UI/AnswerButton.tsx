@@ -32,7 +32,7 @@ export default function answerButton({ answer }: ButtonProps): JSX.Element {
     <button
       disabled={disable}
       onClick={() => sendAnswerHandler(answer.id, answer.qId)}
-      className={`game__button ${colorButton}`}
+      className={`game__button ${colorButton} rounded-2xl border-b-4 border-blue-500 bg-blue-400 py-3 font-bold uppercase text-white transition hover:brightness-110`}
     >
       {answer?.answers}
     </button>

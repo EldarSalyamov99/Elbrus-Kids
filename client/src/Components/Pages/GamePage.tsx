@@ -28,15 +28,17 @@ export default function GamePage(): JSX.Element {
   console.log(Quests);
 
   return (
-
-    <div className="container game__page">
-      <h1 className="game__title">Посмотри данную лекцию и ответь на вопрос!</h1>
+    <div className="container game__page" style={{ backgroundColor: 'white' }}>
+      <h1 className="game__title font-bold text-black">
+        Посмотри данную лекцию и ответь на вопрос!
+      </h1>
       <ReactPlayer url={Quests[count]?.video} />
-      <h2 className="game__question">{Quests[count]?.questions}</h2>
+      <h2 className="game__question font-bold uppercase text-black" style={{ fontSize: '20px' }}>
+        {Quests[count]?.questions}
+      </h2>
       <div className="game__answers" style={{ flexWrap: 'wrap' }}>
         <Buttons count={count} Quest={Quests[count]} clickHandler={clickHandler} />
       </div>
     </div>
-
   );
 }

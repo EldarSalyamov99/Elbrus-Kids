@@ -71,6 +71,6 @@
   background: red;
 }
 
-.game__button-true {
+.game__button-true:disabled {
   background: green;
 }

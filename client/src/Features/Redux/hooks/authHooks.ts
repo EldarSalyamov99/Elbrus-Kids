@@ -1,0 +1,69 @@
+import type React from 'react';
+import { logoutService, signInService, signUpService, updateUserServise } from '../../../Services/authService';
+import { setUser, setUserErr } from '../Slices/userSlice';
+import { useAppDispatch } from './reduxHooks';
+
+export default function authHooks(): {
+  signUpActionHandler: (e: React.FormEvent<HTMLFormElement>) => Promise<void>;
+  signInActionHandler: (e: React.FormEvent<HTMLFormElement>) => Promise<void>;
+  signOutActionHandler: (e: React.MouseEvent<HTMLElement>) => Promise<void>;
+
+  updateUserActionHandler: (e: React.FormEvent<HTMLFormElement>) => Promise<void>;
+} {
+  // eslint-disable-next-line react-hooks/rules-of-hooks
+  const dispatch = useAppDispatch();
+
+  const signUpActionHandler = async (e: React.FormEvent<HTMLFormElement>): Promise<void> => {
+    
+    try {
+      e.preventDefault();
+      const formData = new FormData(e.currentTarget);
+      const data = await signUpService(formData);
+
+      console.log(data);
+      
+      dispatch(setUser(data));
+    } catch (err) {
+      alert("Запоните все поля");
+      dispatch(setUserErr());
+    }
+  };
+  const signInActionHandler = async (e: React.FormEvent<HTMLFormElement>): Promise<void> => {
+    try {
+      e.preventDefault();
+      const formData = new FormData(e.currentTarget);
+      const data = await signInService(formData);
+      dispatch(setUser(data));
+    } catch (err) {
+      alert("Неверный логин или пароль");
+      dispatch(setUserErr());
+    }
+  };
+  const signOutActionHandler = async (e: React.MouseEvent<HTMLElement>): Promise<void> => {
+    try {
+      e.preventDefault();
+      await logoutService();
+      dispatch(setUserErr());
+    } catch (err) {
+      return Promise.reject(err);
+    }
+  };
+
+  const updateUserActionHandler = async (e: React.FormEvent<HTMLFormElement>): Promise<void> => {
+    try {
+      e.preventDefault();
+      const formData = new FormData(e.currentTarget);
+     const data =  await updateUserServise( formData);
+      dispatch(setUser(data))
+    }catch (err) {
+      dispatch(setUserErr());
+    }
+  }
+
+  return {
+    signUpActionHandler,
+    signInActionHandler,
+    signOutActionHandler,
+    updateUserActionHandler
+  };
+}
